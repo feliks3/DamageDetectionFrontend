@@ -12,10 +12,11 @@ function HomePage() {
         console.log(err);
       }
       setImages(data.data);
-      console.log(data.data);
+      // console.log(data.data);
     });
   }, []);
   return <ImageContainer images={images} />;
+  // return <CanvasWithMultipleImages />;
 }
 
 export default HomePage;

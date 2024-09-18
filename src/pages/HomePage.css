@@ -1,33 +1,30 @@
-.image-container {
-  overflow: hidden;
-  height: 200px;
+* {
+  box-sizing: border-box;
+}
+.imageContainer {
+  background-color: lightblue;
   width: 700px;
-  border: 1px solid black;
+  height: 200px;
 }
 
-.image-row {
-  height: 200px;
-  width: 700px;
+.imageRow {
   display: flex;
-  cursor: grab;
-  flex-wrap: nowrap;
   gap: 10px;
-  border: 1px solid red;
-  transition: transform 0.3s ease;
-}
-
-.image-wrapper {
-  display: flex;
-  background-color: #000;
-  width: 200px;
   height: 100%;
+}
+.imageWrapper {
+  display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-}
-
-.image-small {
-  width: 100%;
   height: 100%;
-  object-fit: contain; /* 保持纵横比，适应容器 */
+  background-color: lightcoral;
+  border: 1px solid transparent;
+}
+.imageSmall {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+  background-color: aquamarine;
+  /* object-fit: contain;
+  user-select: none; */
 }
