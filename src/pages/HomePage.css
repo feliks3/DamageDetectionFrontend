@@ -5,6 +5,7 @@
   background-color: lightblue;
   width: 700px;
   height: 200px;
+  overflow: hidden;
 }
 
 .imageRow {
