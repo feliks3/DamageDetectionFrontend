@@ -1,19 +1,34 @@
 * {
   box-sizing: border-box;
 }
-.imageContainer {
+.test {
+  display: flex;
+}
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  background-color: lightcyan;
+}
+.thumbnails-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.thumbnails-container {
+  display: flex;
   background-color: lightblue;
   width: 700px;
   height: 200px;
   overflow: hidden;
 }
 
-.imageRow {
+.image-row {
   display: flex;
   gap: 10px;
   height: 100%;
 }
-.imageWrapper {
+.image-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,11 +36,25 @@
   background-color: lightcoral;
   border: 1px solid transparent;
 }
-.imageSmall {
+.thumbnail-image {
   width: 200px;
   height: 200px;
   margin: 5px;
   background-color: aquamarine;
   /* object-fit: contain;
   user-select: none; */
+}
+.largeImage-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+.largeImage-container {
+  width: 700px;
+}
+
+.largeImage {
+  max-width: 100%;
+  height: auto;
 }

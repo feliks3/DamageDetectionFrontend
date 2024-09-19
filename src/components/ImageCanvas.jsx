@@ -1,6 +1,8 @@
+// src/components/ImageCanvas.jsx
+
 import React, { useState, useEffect, useRef } from 'react';
 
-function ImageCanvas({ imageInfo }) {
+function ImageCanvas({ imageInfo, onImageClick }) {
   const canvasRef = useRef(null);
   const [config, setConfig] = useState(null);
 
@@ -59,9 +61,16 @@ function ImageCanvas({ imageInfo }) {
 
     drawCanvas();
   }, [config, imageInfo]);
+
   return (
-    <div className="imageWrapper">
-      <canvas className="imageSmall" ref={canvasRef} width="200" height="200" />
+    <div className="image-wrapper">
+      <canvas
+        className="thumbnail-image"
+        ref={canvasRef}
+        width="200"
+        height="200"
+        onClick={() => onImageClick(imageInfo.url)}
+      />
     </div>
   );
 }
