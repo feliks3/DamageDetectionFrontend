@@ -1,14 +1,7 @@
-// src/pages/HomePage.jsx
-import GalleryViewer from '../components/GalleryViewer';
-import './HomePage.css';
+import GalleryViewersSection from '../components/Gallery/GalleryViewersSection';
 
 function HomePage() {
-  return (
-    <div className="test">
-      <GalleryViewer />
-      <GalleryViewer />
-    </div>
-  );
+  return <GalleryViewersSection />;
 }
 
 export default HomePage;
