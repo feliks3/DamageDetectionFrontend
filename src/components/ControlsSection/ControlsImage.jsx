@@ -29,6 +29,7 @@ function ControlsImage() {
         activeItem={activeItem}
         outerDiv={outerDiv}
         scalable={false}
+        showDamagedArea={true}
       />
     </ControlsImageWrapperStyled>
   );

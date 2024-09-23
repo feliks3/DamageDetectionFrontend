@@ -34,6 +34,7 @@ function ThumbnailsImage({ image, index }) {
         outerDiv={outerDiv}
         scalable={false}
         imgClickCallback={changeActiveImage}
+        showDamagedArea={true}
       />
     </ThumbnailWrapperStyled>
   );

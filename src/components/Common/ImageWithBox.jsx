@@ -46,8 +46,10 @@ function ImageWithBox({
   scalable,
   imgClickCallback,
   draggable,
+  showDamagedArea,
 }) {
   const imageRef = useRef();
+  const outerDivRef = useRef();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [scale, setScale] = useState(1);
   const [translateX, setTranslateX] = useState(0);
@@ -103,7 +105,7 @@ function ImageWithBox({
         });
       }
     }
-  }, [imageLoaded, activeItem, scale, scalable, outerDiv]);
+  }, [imageLoaded, activeItem, scalable, outerDiv]);
 
   const handleMouseDown = (event) => {
     if (!draggable) return;
@@ -112,6 +114,38 @@ function ImageWithBox({
       x: event.clientX + translateX,
       y: event.clientY + translateY,
     });
+  };
+
+  const handleWheel = (event) => {
+    if (!scalable) return;
+    // event.preventDefault();
+    const scaleAmount = event.deltaY < 0 ? 0.1 : -0.1; // 缩放因子
+    const newScale = Math.min(Math.max(scale + scaleAmount, 1), 3); // 设置缩放范围（例如 0.5 到 3 倍）
+
+    // 计算缩放后的平移值以保持缩放中心
+    const imgRect = imageRef.current.getBoundingClientRect();
+
+    const outerDivRect = outerDivRef.current.getBoundingClientRect();
+
+    let newTranslateX =
+      translateX -
+      (outerDivRect.left - imgRect.left) * ((scale - newScale) / (scale - 1));
+    let newTranslateY =
+      translateY -
+      (outerDivRect.top - imgRect.top) * ((scale - newScale) / (scale - 1));
+
+    if (newScale === 1) {
+      newTranslateX = 0;
+      newTranslateY = 0;
+    }
+    if (scale === 1 && newScale > 1) {
+      newTranslateX = ((newScale - scale) * outerDivRect.width) / 2;
+      newTranslateY = ((newScale - scale) * outerDivRect.height) / 2;
+    }
+
+    setTranslateX(newTranslateX);
+    setTranslateY(newTranslateY);
+    setScale(newScale);
   };
 
   const handleMouseMove = (event) => {
@@ -193,7 +227,9 @@ function ImageWithBox({
     <OuterDiv
       size={outerDivSize}
       onMouseDown={handleMouseDown}
+      onWheel={handleWheel}
       $isDragging={isDragging}
+      ref={outerDivRef}
     >
       {activeItem && (
         <DisplayedImageStyled
@@ -208,7 +244,7 @@ function ImageWithBox({
           onDragStart={(e) => e.preventDefault()} // 阻止默认拖拽事件
         />
       )}
-      {activeItem && (
+      {activeItem && showDamagedArea && (
         <DamagedAreaStyled
           $scaledDamagedArea={scaledDamagedArea}
           $translateX={translateX}

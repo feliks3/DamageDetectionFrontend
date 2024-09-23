@@ -31,6 +31,7 @@ function DisplayedImageWrapper() {
         outerDiv={outerDiv}
         scalable={true}
         draggable={true}
+        showDamagedArea={false}
       />
     </DisplayedImageWrapperStyled>
   );
