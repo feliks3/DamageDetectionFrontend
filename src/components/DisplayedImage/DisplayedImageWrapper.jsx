@@ -15,8 +15,6 @@ const DisplayedImageWrapperStyled = styled.div`
   overflow: hidden;
 `;
 
-// scale(${(props) => props.scale});
-
 function DisplayedImageWrapper() {
   const activeItemIndex = useSelector((state) => state.data.activeItemIndex);
   const items = useSelector((state) => state.data.items);
@@ -32,6 +30,7 @@ function DisplayedImageWrapper() {
         activeItem={activeItem}
         outerDiv={outerDiv}
         scalable={true}
+        draggable={true}
       />
     </DisplayedImageWrapperStyled>
   );

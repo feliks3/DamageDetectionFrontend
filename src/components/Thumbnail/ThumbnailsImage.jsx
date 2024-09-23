@@ -19,10 +19,10 @@ const ThumbnailWrapperStyled = styled.div`
 function ThumbnailsImage({ image, index }) {
   const dispatch = useDispatch();
   const outerDiv = {
-    width: config.controlImageWrapper.width,
-    height: config.controlWrapper.height,
+    width: config.thumbnailsImage.width,
+    height: config.thumbnailsContainer.height,
   };
-  // console.log(scaledDamagedArea);
+
   const changeActiveImage = () => {
     dispatch(setActiveItemIndex(index));
   };
